@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6e1192b741754f0e9dcb19bd8c696381" Name="Diagram1">
+        <EntityTypeShape EntityType="MyOnlineBankingDBModel.Account" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyOnlineBankingDBModel.AccountRequest" Width="1.5" PointX="8" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyOnlineBankingDBModel.Admin" Width="1.5" PointX="5.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyOnlineBankingDBModel.Beneficiary" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyOnlineBankingDBModel.Customer" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyOnlineBankingDBModel.Transaction" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyOnlineBankingDBModel.UserLogin" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <AssociationConnector Association="MyOnlineBankingDBModel.FK__Account__Custome__04E4BC85" ManuallyRouted="false" />
+        <AssociationConnector Association="MyOnlineBankingDBModel.FK__Transacti__FromA__18EBB532" ManuallyRouted="false" />
+        <AssociationConnector Association="MyOnlineBankingDBModel.FK__Transacti__ToAcc__19DFD96B" ManuallyRouted="false" />
+        <AssociationConnector Association="MyOnlineBankingDBModel.FK__AccountRe__Revie__787EE5A0" ManuallyRouted="false" />
+        <AssociationConnector Association="MyOnlineBankingDBModel.FK__Beneficia__Custo__114A936A" ManuallyRouted="false" />
+        <AssociationConnector Association="MyOnlineBankingDBModel.FK__UserLogin__Custo__0C85DE4D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

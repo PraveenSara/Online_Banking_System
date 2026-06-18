@@ -1,0 +1,263 @@
+﻿@*@{
+        ViewBag.Title = "Account Statement";
+    }
+
+    <h2>Account Statement</h2>
+
+    <form method="post">
+
+        <label>From Date</label>
+        <input type="date" name="fromDate" />
+
+        <br /><br />
+
+        <label>To Date</label>
+        <input type="date" name="toDate" />
+
+        <br /><br />
+
+        <button type="submit">
+            Search
+        </button>
+
+    </form>
+
+    <hr />
+
+    <table border="1" cellpadding="10">
+
+        <tr>
+            <th>Reference No</th>
+            <th>From Account</th>
+            <th>To Account</th>
+            <th>Amount</th>
+            <th>Date</th>
+        </tr>
+
+        @if (ViewBag.Statement != null)
+        {
+            foreach (var item in ViewBag.Statement)
+            {
+                <tr>
+                    <td>@item.TransactionReferenceNo</td>
+                    <td>@item.FromAccountNo</td>
+                    <td>@item.ToAccountNo</td>
+                    <td>@item.Amount</td>
+                    <td>@item.TransactionDate</td>
+                </tr>
+            }
+        }
+
+    </table>
+
+    <br />
+
+    <a href="/Dashboard/Index">
+        Back To Dashboard
+    </a>*@
+
+
+
+
+
+
+@{
+    ViewBag.Title = "Account Statement";
+}
+
+<style>
+
+    .statement-container {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .statement-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+        .statement-header h2 {
+            color: #0d6efd;
+            margin-bottom: 5px;
+        }
+
+        .statement-header p {
+            color: gray;
+        }
+
+    .search-box {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 25px;
+    }
+
+    .form-row {
+        display: flex;
+        gap: 20px;
+        align-items: end;
+        flex-wrap: wrap;
+    }
+
+    .form-group {
+        flex: 1;
+        min-width: 200px;
+    }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+    .search-btn {
+        background: #0d6efd;
+        color: white;
+        border: none;
+        padding: 11px 25px;
+        border-radius: 6px;
+        font-weight: bold;
+    }
+
+        .search-btn:hover {
+            background: #0a3d91;
+        }
+
+    .statement-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+        .statement-table th {
+            background: #0d6efd;
+            color: white;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .statement-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .statement-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .statement-table tr:hover {
+            background: #eef4ff;
+        }
+
+    .amount {
+        color: green;
+        font-weight: bold;
+    }
+
+    .back-btn {
+        display: inline-block;
+        margin-top: 25px;
+        padding: 12px 25px;
+        background: #0d6efd;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+    }
+
+        .back-btn:hover {
+            background: #0a3d91;
+            color: white;
+            text-decoration: none;
+        }
+</style>
+
+<div class="statement-container">
+
+    <div class="statement-header">
+        <h2>📄 Account Statement</h2>
+        <p>View transaction history between selected dates</p>
+    </div>
+
+    <form method="post">
+
+        <div class="search-box">
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label>From Date</label>
+                    <input type="date" name="fromDate" required />
+                </div>
+
+                <div class="form-group">
+                    <label>To Date</label>
+                    <input type="date" name="toDate" required />
+                </div>
+
+                <div>
+                    <button type="submit" class="search-btn">
+                        Search
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </form>
+
+    <table class="statement-table">
+
+        <tr>
+            <th>Reference No</th>
+            <th>From Account</th>
+            <th>To Account</th>
+            <th>Amount</th>
+            <th>Date</th>
+        </tr>
+
+        @if (ViewBag.Statement != null)
+        {
+            foreach (var item in ViewBag.Statement)
+            {
+                <tr>
+                    <td>@item.TransactionReferenceNo</td>
+                    <td>@item.FromAccountNo</td>
+                    <td>@item.ToAccountNo</td>
+                    <td class="amount">
+                        ₹ @item.Amount
+                    </td>
+                    <td>
+                        @(Convert.ToDateTime(item.TransactionDate).ToString("dd-MM-yyyy hh:mm tt"))
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5">
+                    No transactions found.
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <a href="/Dashboard/Index" class="back-btn">
+        ← Back To Dashboard
+    </a>
+
+</div>

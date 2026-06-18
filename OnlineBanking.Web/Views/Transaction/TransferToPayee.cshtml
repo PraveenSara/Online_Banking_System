@@ -1,0 +1,207 @@
+﻿@*@{
+        ViewBag.Title = "TransferToPayee";
+    }
+
+    <h2>Transfer Money</h2>
+
+    <form method="post" action="/Transaction/Transfer">
+
+        From Account
+
+        <input name="fromAccount" />
+
+        <br /><br />
+
+        To Account
+
+        <input name="toAccount"
+               value="@ViewBag.PayeeAccount"
+               readonly />
+
+        <br /><br />
+
+        Amount
+
+        <input name="amount" />
+
+        <br /><br />
+
+        Transfer Type
+
+        <select name="transactionMode">
+
+            <option>IMPS</option>
+
+            <option>NEFT</option>
+
+            <option>RTGS</option>
+
+        </select>
+
+        <br /><br />
+
+        <button type="submit">
+
+            Transfer
+
+        </button>
+
+    </form>*@
+
+
+
+
+
+
+@{
+    ViewBag.Title = "Transfer To Payee";
+}
+
+<style>
+    body {
+        background: #f4f7fc;
+    }
+
+    .transfer-card {
+        max-width: 650px;
+        margin: 40px auto;
+        background: white;
+        padding: 35px;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    .page-title {
+        text-align: center;
+        color: #1e3a8a;
+        margin-bottom: 30px;
+        font-weight: bold;
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 6px;
+        display: block;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        margin-bottom: 18px;
+        font-size: 15px;
+    }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #1e3a8a;
+            box-shadow: 0 0 5px rgba(30,58,138,0.3);
+        }
+
+    .btn-transfer {
+        width: 100%;
+        padding: 12px;
+        background: #1e3a8a;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+        .btn-transfer:hover {
+            background: #152c69;
+        }
+
+    .payee-box {
+        background: #eff6ff;
+        border-left: 4px solid #2563eb;
+        padding: 12px;
+        margin-bottom: 20px;
+        border-radius: 6px;
+        color: #1e3a8a;
+        font-weight: 600;
+    }
+
+    .back-link {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+        .back-link a {
+            text-decoration: none;
+            color: #1e3a8a;
+            font-weight: 600;
+        }
+</style>
+
+<div class="transfer-card">
+
+    <h2 class="page-title">
+        💸 Transfer Money
+    </h2>
+
+    <div class="payee-box">
+        Selected Beneficiary Account :
+        @ViewBag.PayeeAccount
+    </div>
+
+    <form method="post" action="/Transaction/Transfer">
+
+        <label class="form-label">
+            From Account
+        </label>
+
+        <input class="form-control"
+               name="fromAccount"
+               required />
+
+        <label class="form-label">
+            To Account
+        </label>
+
+        <input class="form-control"
+               name="toAccount"
+               value="@ViewBag.PayeeAccount"
+               readonly />
+
+        <label class="form-label">
+            Amount
+        </label>
+
+        <input class="form-control"
+               name="amount"
+               required />
+
+        <label class="form-label">
+            Transfer Type
+        </label>
+
+        <select class="form-control"
+                name="transactionMode">
+
+            <option>IMPS</option>
+            <option>NEFT</option>
+            <option>RTGS</option>
+
+        </select>
+
+        <button type="submit"
+                class="btn-transfer">
+
+            Transfer Money
+
+        </button>
+
+    </form>
+
+    <div class="back-link">
+        <a href="/Beneficiary/List">
+            ← Back To Beneficiary List
+        </a>
+    </div>
+
+</div>

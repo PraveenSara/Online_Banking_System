@@ -1,0 +1,177 @@
+﻿@*@{
+        ViewBag.Title = "Index";
+    }
+
+    <h2>👤 Add Beneficiary</h2>
+
+    <form method="post" action="/Beneficiary/Add">
+
+        Customer ID:
+        <input name="customerId" />
+
+        <br /><br />
+
+        Name:
+        <input name="name" />
+
+        <br /><br />
+
+        Account No:
+        <input name="accountNo" />
+
+        <br /><br />
+
+        Nickname:
+        <input name="nickname" />
+
+        <br /><br />
+
+        <button type="submit">Add</button>
+
+    </form>
+
+    <p>@ViewBag.Result</p>
+
+    <br />
+
+    <a href="/Beneficiary/List?customerId=1">View List</a>*@
+
+
+
+
+
+
+@{
+    ViewBag.Title = "Add Beneficiary";
+}
+
+<style>
+
+    .beneficiary-container {
+        max-width: 650px;
+        margin: auto;
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .beneficiary-header {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+        .beneficiary-header h2 {
+            color: #0d6efd;
+            margin-bottom: 5px;
+        }
+
+        .beneficiary-header p {
+            color: gray;
+        }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+    .btn-add {
+        width: 100%;
+        padding: 12px;
+        background: #0d6efd;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+        .btn-add:hover {
+            background: #0a3d91;
+        }
+
+    .result-box {
+        margin-top: 20px;
+        padding: 12px;
+        background: #eef4ff;
+        border-left: 5px solid #0d6efd;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    .links {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+        .links a {
+            text-decoration: none;
+            color: #0d6efd;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+</style>
+
+<div class="beneficiary-container">
+
+    <div class="beneficiary-header">
+        <h2>👤 Add Beneficiary</h2>
+        <p>Add a beneficiary for future fund transfers</p>
+    </div>
+
+    <form method="post" action="/Beneficiary/Add">
+
+        <div class="form-group">
+            <label>Customer ID</label>
+            <input name="customerId"
+                   value="@Session["CustomerId"]"
+                   readonly />
+        </div>
+
+        <div class="form-group">
+            <label>Beneficiary Name</label>
+            <input name="name" required />
+        </div>
+
+        <div class="form-group">
+            <label>Account Number</label>
+            <input name="accountNo" required />
+        </div>
+
+        <div class="form-group">
+            <label>Nickname</label>
+            <input name="nickname" required />
+        </div>
+
+        <button type="submit" class="btn-add">
+            Add Beneficiary
+        </button>
+
+    </form>
+
+    @if (ViewBag.Result != null)
+    {
+        <div class="result-box">
+            @ViewBag.Result
+        </div>
+    }
+
+    <div class="links">
+        <a href="/Beneficiary/List">📋 View Beneficiaries</a>
+        |
+        <a href="/Transaction/Index">💸 Fund Transfer</a>
+    </div>
+
+</div>

@@ -1,0 +1,238 @@
+﻿@*@model List<dynamic>
+
+    @{
+        ViewBag.Title = "PendingRequests";
+    }
+
+    <h2>Pending Account Requests</h2>
+
+    <table border="1" cellpadding="10">
+
+        <tr>
+            <th>Request Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Action</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.RequestId</td>
+
+                <td>@item.FullName</td>
+
+                <td>@item.Email</td>
+
+                <td>@item.Mobile</td>
+
+                <td>
+
+                    <a href="/Admin/Approve?requestId=@item.RequestId">
+                        Approve
+                    </a>
+
+                    |
+
+                    <a href="/Admin/Reject?requestId=@item.RequestId">
+                        Reject
+                    </a>
+
+                </td>
+
+            </tr>
+        }
+
+    </table>
+
+    <br />
+
+    <a href="/Admin/Logout">
+        Logout
+    </a>*@
+
+
+
+
+
+@model List<dynamic>
+
+@{
+    ViewBag.Title = "Pending Requests";
+}
+
+<style>
+    body {
+        background: #f4f7fc;
+    }
+
+    .page-container {
+        max-width: 1100px;
+        margin: 40px auto;
+    }
+
+    .page-header {
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        margin-bottom: 25px;
+    }
+
+        .page-header h2 {
+            margin: 0;
+            color: #1e3a8a;
+        }
+
+        .page-header p {
+            margin-top: 8px;
+            color: gray;
+        }
+
+    .table-card {
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th {
+        background: #2563eb;
+        color: white;
+        padding: 14px;
+        text-align: left;
+    }
+
+    td {
+        padding: 14px;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    tr:hover {
+        background: #f8fafc;
+    }
+
+    .approve-btn {
+        background: #16a34a;
+        color: white;
+        padding: 8px 15px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+        .approve-btn:hover {
+            background: #15803d;
+            color: white;
+        }
+
+    .reject-btn {
+        background: #dc2626;
+        color: white;
+        padding: 8px 15px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-left: 5px;
+    }
+
+        .reject-btn:hover {
+            background: #b91c1c;
+            color: white;
+        }
+
+    .logout-btn {
+        display: inline-block;
+        margin-top: 25px;
+        background: #1e3a8a;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+        .logout-btn:hover {
+            background: #1d4ed8;
+            color: white;
+        }
+
+    .empty-message {
+        text-align: center;
+        padding: 30px;
+        color: gray;
+        font-size: 18px;
+    }
+</style>
+
+<div class="page-container">
+
+    <div class="page-header">
+        <h2>Pending Account Requests</h2>
+        <p>Review and approve customer account opening requests.</p>
+    </div>
+
+    <div class="table-card">
+
+        @if (Model != null && Model.Count > 0)
+        {
+            <table>
+
+                <tr>
+                    <th>Request ID</th>
+                    <th>Customer Name</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Action</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>@item.RequestId</td>
+
+                        <td>@item.FullName</td>
+
+                        <td>@item.Email</td>
+
+                        <td>@item.Mobile</td>
+
+                        <td>
+                            <a class="approve-btn"
+                               href="/Admin/Approve?requestId=@item.RequestId">
+                                ✓ Approve
+                            </a>
+
+                            <a class="reject-btn"
+                               href="/Admin/Reject?requestId=@item.RequestId">
+                                ✗ Reject
+                            </a>
+                        </td>
+
+                    </tr>
+                }
+
+            </table>
+        }
+        else
+        {
+            <div class="empty-message">
+                No Pending Requests Available
+            </div>
+        }
+
+    </div>
+
+    <a href="/Admin/Logout" class="logout-btn">
+        Logout
+    </a>
+
+</div>

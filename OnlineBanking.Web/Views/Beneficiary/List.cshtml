@@ -1,0 +1,209 @@
+﻿@*@model List<OnlineBanking.Web.Models.BeneficiaryViewModel>
+    @{
+        ViewBag.Title = "List";
+    }
+
+    <h2>📋 Beneficiary List</h2>
+
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Account No</th>
+            <th>Nickname</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.BeneficiaryId</td>
+                <td>@item.BeneficiaryName</td>
+                <td>@item.BeneficiaryAccountNo</td>
+                <td>@item.NickName</td>
+            </tr>
+        }
+    </table>*@
+
+
+@*@model List<OnlineBanking.Web.Models.BeneficiaryViewModel>
+
+    <h2>My Payees</h2>
+
+    <table border="1" cellpadding="10">
+
+        <tr>
+            <th>Name</th>
+            <th>Account No</th>
+            <th>Nickname</th>
+            <th>Transfer</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.BeneficiaryName</td>
+
+                <td>@item.BeneficiaryAccountNo</td>
+
+                <td>@item.NickName</td>
+
+                <td>
+                    <a href="/Transaction/TransferToPayee?accountNo=@item.BeneficiaryAccountNo">
+                        Transfer
+                    </a>
+                </td>
+
+            </tr>
+        }
+
+    </table>*@
+
+
+
+
+
+
+@model List<OnlineBanking.Web.Models.BeneficiaryViewModel>
+
+@{
+    ViewBag.Title = "My Beneficiaries";
+}
+
+<style>
+    body {
+        background: #f4f7fc;
+    }
+
+    .page-container {
+        max-width: 1000px;
+        margin: 40px auto;
+    }
+
+    .card {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    .page-title {
+        color: #1e3c72;
+        text-align: center;
+        margin-bottom: 25px;
+        font-weight: bold;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th {
+        background: #1e3c72;
+        color: white;
+        padding: 12px;
+        text-align: center;
+    }
+
+    td {
+        padding: 12px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+
+    tr:hover {
+        background: #f8f9ff;
+    }
+
+    .transfer-btn {
+        background: #28a745;
+        color: white;
+        padding: 8px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+        .transfer-btn:hover {
+            background: #218838;
+            color: white;
+            text-decoration: none;
+        }
+
+    .back-btn {
+        display: inline-block;
+        margin-top: 20px;
+        background: #1e3c72;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+        .back-btn:hover {
+            background: #2a5298;
+            color: white;
+            text-decoration: none;
+        }
+
+    .empty-msg {
+        text-align: center;
+        padding: 20px;
+        color: gray;
+        font-size: 16px;
+    }
+</style>
+
+<div class="page-container">
+
+    <div class="card">
+
+        <h2 class="page-title">👥 My Beneficiaries</h2>
+
+        @if (Model != null && Model.Count > 0)
+        {
+            <table>
+
+                <tr>
+                    <th>Beneficiary Name</th>
+                    <th>Account Number</th>
+                    <th>Nickname</th>
+                    <th>Action</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>@item.BeneficiaryName</td>
+
+                        <td>@item.BeneficiaryAccountNo</td>
+
+                        <td>@item.NickName</td>
+
+                        <td>
+                            <a class="transfer-btn"
+                               href="/Transaction/TransferToPayee?accountNo=@item.BeneficiaryAccountNo">
+                                Transfer
+                            </a>
+                        </td>
+
+                    </tr>
+                }
+
+            </table>
+        }
+        else
+        {
+            <div class="empty-msg">
+                No beneficiaries found.
+            </div>
+        }
+
+        <a href="/Transaction/Index" class="back-btn">
+            ← Back To Fund Transfer
+        </a>
+
+    </div>
+
+</div>

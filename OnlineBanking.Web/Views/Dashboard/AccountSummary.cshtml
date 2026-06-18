@@ -1,0 +1,175 @@
+﻿@*@{
+        ViewBag.Title = "Account Summary";
+    }
+
+    <h2>Account Summary</h2>
+
+    <table border="1" cellpadding="10">
+
+        <tr>
+            <th>Customer Name</th>
+            <td>@ViewBag.CustomerName</td>
+        </tr>
+
+        <tr>
+            <th>Account Number</th>
+            <td>@ViewBag.AccountNumber</td>
+        </tr>
+
+        <tr>
+            <th>Account Type</th>
+            <td>@ViewBag.AccountType</td>
+        </tr>
+
+        <tr>
+            <th>Available Balance</th>
+            <td>₹ @ViewBag.Balance</td>
+        </tr>
+
+        <tr>
+            <th>Status</th>
+            <td>@ViewBag.AccountStatus</td>
+        </tr>
+
+    </table>*@
+
+
+
+
+@{
+    ViewBag.Title = "Account Summary";
+}
+
+<style>
+
+    .summary-container {
+        max-width: 850px;
+        margin: auto;
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .summary-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+        .summary-header h2 {
+            color: #0d6efd;
+            margin-bottom: 5px;
+        }
+
+        .summary-header p {
+            color: gray;
+        }
+
+    .balance-card {
+        background: linear-gradient(135deg,#0d6efd,#0a3d91);
+        color: white;
+        padding: 25px;
+        border-radius: 12px;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+        .balance-card h4 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .balance-card h1 {
+            margin-top: 10px;
+            font-size: 38px;
+        }
+
+    .summary-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .summary-table th {
+            width: 35%;
+            background: #0d6efd;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .summary-table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            background: #f8f9fa;
+        }
+
+        .summary-table tr:hover td {
+            background: #eef4ff;
+        }
+
+    .status-active {
+        color: green;
+        font-weight: bold;
+    }
+
+    .back-btn {
+        display: inline-block;
+        margin-top: 25px;
+        padding: 12px 25px;
+        background: #0d6efd;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+    }
+
+        .back-btn:hover {
+            background: #0a3d91;
+            color: white;
+            text-decoration: none;
+        }
+</style>
+
+<div class="summary-container">
+
+    <div class="summary-header">
+        <h2>🏦 Account Summary</h2>
+        <p>Your account information at a glance</p>
+    </div>
+
+    <div class="balance-card">
+        <h4>Available Balance</h4>
+        <h1>₹ @ViewBag.Balance</h1>
+    </div>
+
+    <table class="summary-table">
+
+        <tr>
+            <th>Customer Name</th>
+            <td>@ViewBag.CustomerName</td>
+        </tr>
+
+        <tr>
+            <th>Account Number</th>
+            <td>@ViewBag.AccountNumber</td>
+        </tr>
+
+        <tr>
+            <th>Account Type</th>
+            <td>@ViewBag.AccountType</td>
+        </tr>
+
+        <tr>
+            <th>Account Status</th>
+            <td class="status-active">
+                @ViewBag.AccountStatus
+            </td>
+        </tr>
+
+    </table>
+
+    <a href="/Dashboard/Index" class="back-btn">
+        ← Back To Dashboard
+    </a>
+
+</div>

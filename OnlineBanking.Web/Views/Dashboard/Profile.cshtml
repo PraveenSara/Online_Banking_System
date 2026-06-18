@@ -1,0 +1,174 @@
+﻿@*@{
+        ViewBag.Title = "Profile";
+    }
+
+    <h2>User Profile</h2>
+
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>Name</th>
+            <td>@ViewBag.FullName</td>
+        </tr>
+
+        <tr>
+            <th>Email</th>
+            <td>@ViewBag.Email</td>
+        </tr>
+
+        <tr>
+            <th>Mobile</th>
+            <td>@ViewBag.Mobile</td>
+        </tr>
+
+        <tr>
+            <th>Date Of Birth</th>
+            <td>@ViewBag.Dob</td>
+        </tr>
+
+        <tr>
+            <th>Aadhar Number</th>
+            <td>@ViewBag.AadharNo</td>
+        </tr>
+
+        <tr>
+            <th>Occupation</th>
+            <td>@ViewBag.Occupation</td>
+        </tr>
+
+        <tr>
+            <th>Address</th>
+            <td>@ViewBag.Address</td>
+        </tr>
+    </table>
+
+    <br />
+
+    <a href="/Dashboard/Index">
+        Back To Dashboard
+    </a>*@
+
+
+
+
+
+@{
+    ViewBag.Title = "My Profile";
+}
+
+<style>
+
+    .profile-container {
+        max-width: 850px;
+        margin: auto;
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .profile-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+        .profile-header h2 {
+            color: #0d6efd;
+            margin-bottom: 5px;
+        }
+
+        .profile-header p {
+            color: gray;
+        }
+
+    .profile-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .profile-table th {
+            width: 30%;
+            background: #0d6efd;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .profile-table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            background: #f8f9fa;
+        }
+
+        .profile-table tr:hover td {
+            background: #eef4ff;
+        }
+
+    .btn-back {
+        display: inline-block;
+        margin-top: 25px;
+        padding: 12px 25px;
+        background: #0d6efd;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+    }
+
+        .btn-back:hover {
+            background: #0a3d91;
+            color: white;
+            text-decoration: none;
+        }
+</style>
+
+<div class="profile-container">
+
+    <div class="profile-header">
+        <h2>User Profile</h2>
+        <p>Your registered banking information</p>
+    </div>
+
+    <table class="profile-table">
+
+        <tr>
+            <th>Full Name</th>
+            <td>@ViewBag.FullName</td>
+        </tr>
+
+        <tr>
+            <th>Email Address</th>
+            <td>@ViewBag.Email</td>
+        </tr>
+
+        <tr>
+            <th>Mobile Number</th>
+            <td>@ViewBag.Mobile</td>
+        </tr>
+
+        <tr>
+            <th>Date Of Birth</th>
+            <td>@ViewBag.Dob</td>
+        </tr>
+
+        <tr>
+            <th>Aadhar Number</th>
+            <td>@ViewBag.AadharNo</td>
+        </tr>
+
+        <tr>
+            <th>Occupation</th>
+            <td>@ViewBag.Occupation</td>
+        </tr>
+
+        <tr>
+            <th>Residential Address</th>
+            <td>@ViewBag.Address</td>
+        </tr>
+
+    </table>
+
+    <a href="/Dashboard/Index" class="btn-back">
+        ← Back To Dashboard
+    </a>
+
+</div>

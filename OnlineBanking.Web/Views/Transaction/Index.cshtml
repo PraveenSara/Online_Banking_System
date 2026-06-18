@@ -1,0 +1,207 @@
+﻿@*@{
+        ViewBag.Title = "Fund Transfer";
+    }
+
+    <h2>Fund Transfer</h2>
+
+    <form method="post" action="/Transaction/Transfer">
+
+
+        <a href="/Beneficiary/Index">Add Beneficiary</a>
+        <br /><br />
+        <a href="/Beneficiary/List">Beneficiary List</a>
+
+
+        <p>From Account</p>
+        <input name="fromAccount" required />
+
+        <p>To Account</p>
+        <input name="toAccount" required />
+
+        <p>Amount</p>
+        <input name="amount" required />
+
+        <p>Transfer Type</p>
+        <select name="transactionMode">
+            <option value="IMPS">IMPS</option>
+            <option value="NEFT">NEFT</option>
+            <option value="RTGS">RTGS</option>
+        </select>
+
+        <br /><br />
+
+        <button type="submit">
+            Transfer Money
+        </button>
+
+    </form>
+
+    <br />
+
+    @if (ViewBag.Result != null)
+    {
+        <h3>@ViewBag.Result</h3>
+    }*@
+
+
+@{
+    ViewBag.Title = "Fund Transfer";
+}
+
+<style>
+
+    .transfer-container {
+        max-width: 700px;
+        margin: auto;
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    }
+
+    .transfer-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+        .transfer-header h2 {
+            color: #0d6efd;
+        }
+
+    .quick-links {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+
+        .quick-links a {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            background: #0d6efd;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+            .quick-links a:hover {
+                background: #0a3d91;
+            }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+    .transfer-btn {
+        width: 100%;
+        padding: 14px;
+        background: #0d6efd;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+        .transfer-btn:hover {
+            background: #0a3d91;
+        }
+
+    .receipt {
+        margin-top: 25px;
+        padding: 20px;
+        border-radius: 10px;
+        background: #eef4ff;
+        border-left: 5px solid #0d6efd;
+    }
+
+        .receipt h3 {
+            color: green;
+            margin-top: 0;
+        }
+</style>
+
+<div class="transfer-container">
+
+    <div class="transfer-header">
+        <h2>Fund Transfer</h2>
+        <p>Transfer money securely using IMPS, NEFT or RTGS</p>
+    </div>
+
+    <div class="quick-links">
+
+        <a href="/Beneficiary/Index">
+            Add Beneficiary
+        </a>
+
+        <a href="/Beneficiary/List">
+            Beneficiary List
+        </a>
+
+    </div>
+
+    <form method="post" action="/Transaction/Transfer">
+
+        <div class="form-group">
+            <label>From Account</label>
+            <input name="fromAccount"
+                   value="@Session["AccountNumber"]"
+                   readonly />
+        </div>
+
+        <div class="form-group">
+            <label>To Account</label>
+            <input name="toAccount" required />
+        </div>
+
+        <div class="form-group">
+            <label>Amount</label>
+            <input name="amount" type="number" required />
+        </div>
+
+        <div class="form-group">
+            <label>Transfer Type</label>
+
+            <select name="transactionMode">
+                <option value="IMPS">IMPS - Immediate Transfer</option>
+                <option value="NEFT">NEFT - Batch Transfer</option>
+                <option value="RTGS">RTGS - High Value Transfer</option>
+            </select>
+        </div>
+
+        <button type="submit" class="transfer-btn">
+            Transfer Money
+        </button>
+
+    </form>
+
+    @if (ViewBag.Result != null)
+    {
+        <div class="receipt">
+
+            <h3>Transaction Status</h3>
+
+            <p>
+                @ViewBag.Result
+            </p>
+
+        </div>
+    }
+
+</div>

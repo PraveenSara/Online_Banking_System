@@ -1,0 +1,182 @@
+﻿@*@{
+        ViewBag.Title = "Receipt";
+    }
+
+    <h2>Transaction Receipt</h2>
+
+    <table border="1" cellpadding="10">
+
+        <tr>
+            <th>Status</th>
+            <td style="color:green">
+                SUCCESS
+            </td>
+        </tr>
+
+        <tr>
+            <th>From Account</th>
+            <td>@ViewBag.FromAccount</td>
+        </tr>
+
+        <tr>
+            <th>To Account</th>
+            <td>@ViewBag.ToAccount</td>
+        </tr>
+
+        <tr>
+            <th>Amount</th>
+            <td>₹ @ViewBag.Amount</td>
+        </tr>
+
+        <tr>
+            <th>Transfer Type</th>
+            <td>@ViewBag.Mode</td>
+        </tr>
+
+        <tr>
+            <th>Date</th>
+            <td>@DateTime.Now</td>
+        </tr>
+
+    </table>
+
+    <br />
+
+    <a href="/Dashboard/Index">
+        Back To Dashboard
+    </a>*@
+
+
+
+@{
+    ViewBag.Title = "Transaction Receipt";
+}
+
+<style>
+    .receipt-container {
+        max-width: 700px;
+        margin: 40px auto;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        overflow: hidden;
+    }
+
+    .receipt-header {
+        background: #1e3c72;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+
+        .receipt-header h2 {
+            margin: 0;
+        }
+
+    .success {
+        text-align: center;
+        color: green;
+        font-size: 22px;
+        font-weight: bold;
+        padding: 20px;
+    }
+
+    .receipt-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .receipt-table th {
+            background: #f4f7fc;
+            text-align: left;
+            padding: 15px;
+            width: 40%;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .receipt-table td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+    .btn-back {
+        display: inline-block;
+        margin: 25px;
+        padding: 12px 25px;
+        background: #1e3c72;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+    }
+
+        .btn-back:hover {
+            background: #2a5298;
+            color: white;
+            text-decoration: none;
+        }
+
+    .footer {
+        text-align: center;
+        color: gray;
+        padding: 15px;
+        font-size: 13px;
+    }
+</style>
+
+<div class="receipt-container">
+
+    <div class="receipt-header">
+        <h2>Transaction Receipt</h2>
+    </div>
+
+    <div class="success">
+        ✓ Transfer Successful
+    </div>
+
+    <table class="receipt-table">
+
+        <tr>
+            <th>From Account</th>
+            <td>@ViewBag.FromAccount</td>
+        </tr>
+
+        <tr>
+            <th>To Account</th>
+            <td>@ViewBag.ToAccount</td>
+        </tr>
+
+        <tr>
+            <th>Amount</th>
+            <td>₹ @ViewBag.Amount</td>
+        </tr>
+
+        <tr>
+            <th>Transfer Type</th>
+            <td>@ViewBag.Mode</td>
+        </tr>
+
+        <tr>
+            <th>Date & Time</th>
+            <td>@DateTime.Now.ToString("dd-MM-yyyy hh:mm tt")</td>
+        </tr>
+
+        <tr>
+            <th>Reference No</th>
+            <td>
+                @("TXN" + DateTime.Now.ToString("yyyyMMddHHmmss"))
+            </td>
+        </tr>
+
+    </table>
+
+    <center>
+        <a href="/Dashboard/Index" class="btn-back">
+            Back To Dashboard
+        </a>
+    </center>
+
+    <div class="footer">
+        Thank you for using Online Banking System
+    </div>
+
+</div>

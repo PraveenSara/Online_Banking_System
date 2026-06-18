@@ -1,0 +1,371 @@
+﻿@*@{
+        ViewBag.Title = "Dashboard";
+    }
+
+    <style>
+        .container {
+            width: 100%;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 220px;
+            min-height: 500px;
+            border: 1px solid black;
+            padding: 20px;
+
+        }
+
+            .sidebar a {
+                display: block;
+                margin-bottom: 20px;
+                text-decoration: none;
+                color: black;
+                font-size: 16px;
+            }
+
+        .main {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+            .header h2 {
+                display: inline-block;
+                border: 2px solid black;
+                padding: 10px 40px;
+            }
+
+        .menu {
+            display: flex;
+            border: 1px solid black;
+        }
+
+            .menu a {
+                flex: 1;
+                padding: 12px;
+                text-align: center;
+                border-right: 1px solid black;
+                text-decoration: none;
+                color: black;
+            }
+
+                .menu a:last-child {
+                    border-right: none;
+                }
+
+        .content {
+            margin-top: 30px;
+            border: 1px solid gray;
+            min-height: 300px;
+            padding: 20px;
+        }
+
+        .welcome {
+            float: right;
+        }
+    </style>
+
+    <div class="header">
+        <h2>Dashboard</h2>
+    </div>
+    <br /><br />
+
+    <div class="welcome">
+        Welcome @Session["Username"]
+    </div>
+
+    <br /><br />
+
+    <div class="container">
+
+        <div class="sidebar">
+
+            <a href="/Dashboard/Profile">
+                Account Details
+            </a>
+
+            <a href="/Dashboard/AccountSummary">
+                Account Summary
+            </a>
+
+            <a href="/Transaction/Index">
+                Funds Transfer
+            </a>
+
+            <a href="/Dashboard/Statement">
+                Account Statement
+            </a>
+
+            <a href="/Password/Index">
+                Change Password
+            </a>
+
+            <a href="/Password/Logout">
+                Logout
+            </a>
+
+        </div>
+
+        <div class="main">
+
+            <div class="menu">
+
+                <a href="/Dashboard/Statement">
+                    Account Statement
+                </a>
+
+                <a href="/Transaction/Index">
+                    Funds Transfer
+                </a>
+
+                <a href="/Dashboard/Profile">
+                    User Profile
+                </a>
+
+                <a href="/Password/Index">
+                    Change Password
+                </a>
+
+            </div>
+
+            <div class="content">
+
+                <h3>Welcome To Online Banking System</h3>
+
+                <p>
+                    Use the menu options to access your banking services.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>*@
+
+
+
+
+
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f7fc;
+        margin: 0;
+    }
+
+    .topbar {
+        background: linear-gradient(135deg,#0d6efd,#0a3d91);
+        color: white;
+        padding: 15px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+        .topbar h2 {
+            margin: 0;
+        }
+
+    .welcome {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .container {
+        display: flex;
+        min-height: calc(100vh - 70px);
+    }
+
+    .sidebar {
+        width: 250px;
+        background: white;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        padding-top: 20px;
+    }
+
+        .sidebar a {
+            display: block;
+            padding: 15px 25px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            border-left: 4px solid transparent;
+            transition: 0.3s;
+        }
+
+            .sidebar a:hover {
+                background: #eef4ff;
+                border-left: 4px solid #0d6efd;
+                color: #0d6efd;
+            }
+
+    .main {
+        flex: 1;
+        padding: 30px;
+    }
+
+    .menu {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+
+        .menu a {
+            flex: 1;
+            text-decoration: none;
+            background: white;
+            color: #0d6efd;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+            .menu a:hover {
+                background: #0d6efd;
+                color: white;
+            }
+
+    .content {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    }
+
+        .content h3 {
+            color: #0d6efd;
+            margin-top: 0;
+        }
+
+    .cards {
+        display: flex;
+        gap: 20px;
+        margin-top: 25px;
+    }
+
+    .card {
+        flex: 1;
+        background: linear-gradient(135deg,#0d6efd,#0a3d91);
+        color: white;
+        padding: 20px;
+        border-radius: 12px;
+        text-align: center;
+    }
+
+        .card h4 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .card p {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+</style>
+
+@*<div class="topbar">
+    <h2>Online Banking System</h2>
+
+    <div class="welcome">
+        Welcome @Session["Username"]
+    </div>
+</div>*@
+
+<div class="container">
+
+    <div class="sidebar">
+
+        <a href="/Dashboard/Profile">
+            Account Details
+        </a>
+
+        <a href="/Dashboard/AccountSummary">
+            Account Summary
+        </a>
+
+        <a href="/Transaction/Index">
+            Funds Transfer
+        </a>
+
+        <a href="/Dashboard/Statement">
+            Account Statement
+        </a>
+
+        <a href="/Password/Index">
+            Change Password
+        </a>
+
+        <a href="/Password/Logout">
+            Logout
+        </a>
+
+    </div>
+
+    <div class="main">
+
+        <div class="menu">
+
+            <a href="/Dashboard/Statement">
+                Account Statement
+            </a>
+
+            <a href="/Transaction/Index">
+                Funds Transfer
+            </a>
+
+            <a href="/Dashboard/Profile">
+                User Profile
+            </a>
+
+            <a href="/Password/Index">
+                Change Password
+            </a>
+
+        </div>
+
+        <div class="content">
+
+            <h3>Welcome To Online Banking System</h3>
+
+            <p>
+                Manage your accounts, transfer funds,
+                view statements and update your profile
+                securely from one place.
+            </p>
+
+            <div class="cards">
+
+                <div class="card">
+                    <h4>Account Services</h4>
+                    <p>24/7</p>
+                </div>
+
+                <div class="card">
+                    <h4>Secure Banking</h4>
+                    <p>100%</p>
+                </div>
+
+                <div class="card">
+                    <h4>Fund Transfer</h4>
+                    <p>IMPS / NEFT</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
